@@ -1,0 +1,58 @@
+<?php
+// Xyro is Back! — front controller
+?><!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090b10">
+  <title>Xyro is Back!</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./"><span class="brand-mark">X</span><span>XYRO <small>IS BACK!</small></span></a>
+      <div class="side-label">MENU</div>
+      <button class="nav-item active" data-view="home"><span>⌂</span> Início</button>
+      <button class="nav-item" data-view="favorites"><span>♡</span> Favoritos</button>
+      <button class="nav-item" data-view="history"><span>◷</span> Histórico</button>
+      <div class="sidebar-bottom"><span class="pulse"></span> Player pronto <small>Reprodução incorporada</small></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-brand" aria-label="Xyro">X</button>
+        <form id="searchForm" class="search">
+          <span>⌕</span><input id="searchInput" type="search" placeholder="Pesquise vídeos..." autocomplete="off" aria-label="Pesquisar vídeos">
+          <button type="submit">Pesquisar</button>
+        </form>
+        <button id="clearSearch" class="icon-button" title="Limpar pesquisa">↺</button>
+      </header>
+
+      <section class="welcome" id="welcome">
+        <div class="eyebrow"><span class="pulse"></span> SEU ESPAÇO, SEU SOM</div>
+        <h1>Seu próximo <em>play</em><br>começa aqui.</h1>
+        <p>Pesquise um vídeo ou cole um link/ID para começar a assistir.</p>
+      </section>
+
+      <section class="content-grid">
+        <section class="results-panel">
+          <div class="section-heading"><div><span class="eyebrow" id="resultEyebrow">EXPLORE</span><h2 id="resultTitle">Em destaque</h2></div><span id="resultCount" class="muted"></span></div>
+          <div id="results" class="results">
+            <div class="empty-state"><div class="empty-icon">⌕</div><strong>O que vamos assistir?</strong><span>Use a pesquisa acima para encontrar vídeos.</span></div>
+          </div>
+        </section>
+        <aside class="player-panel">
+          <div class="section-heading"><div><span class="eyebrow">AGORA TOCANDO</span><h2>Player</h2></div><button id="favoriteCurrent" class="heart" title="Adicionar aos favoritos">♡</button></div>
+          <div class="video-frame" id="videoFrame"><div class="video-placeholder"><div class="play-orb">▶</div><strong>Escolha um vídeo</strong><span>Ele aparecerá aqui</span></div></div>
+          <div class="now-playing"><div><strong id="nowTitle">Nada reproduzindo</strong><span id="nowChannel">Selecione um resultado para começar</span></div><span class="live-dot"></span></div>
+          <div class="player-note">A reprodução usa o player oficial incorporado. Alguns vídeos podem não permitir incorporação.</div>
+        </aside>
+      </section>
+      <footer>XYRO IS BACK! <span>Feito para descobrir e assistir.</span></footer>
+    </main>
+  </div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
