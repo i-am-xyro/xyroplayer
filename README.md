@@ -2,11 +2,6 @@
 
 Player web em HTML/CSS/JavaScript, com pesquisa pela YouTube Data API v3 e reprodução pelo player oficial incorporado.
 
-## Como publicar no GitHub Pages
-1. Suba todos os arquivos e pastas deste repositório para o GitHub.
-2. Acesse **Settings > Pages** no repositório.
-3. Em **Build and deployment**, selecione `Deploy from a branch`, escolha a branch `main` e a pasta `/ (root)` e clique em **Save**.
-
 ## Configurar a pesquisa
 A chave da YouTube Data API v3 está configurada em `assets/app.js`.
 - **Segurança:** Como o GitHub Pages é estático e público, restrinja a chave no **Google Cloud Console** (Credenciais > Restrições de aplicativo > Referenciadores HTTP) para aceitar requisições apenas do domínio do seu GitHub Pages (ex: `https://seuusuario.github.io/*`).
