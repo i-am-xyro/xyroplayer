@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b10">
+  <title>Xyro is Back!</title>
+  <!-- Bootstrap 5.3 CSS & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar Desktop -->
+    <aside class="sidebar d-none d-md-flex flex-column">
+      <a class="brand" href="./">
+        <span class="brand-mark">X</span>
+        <span>XYRO <small>IS BACK!</small></span>
+      </a>
+      <div class="side-label">MENU</div>
+      <nav class="d-flex flex-column gap-2">
+        <button class="nav-item active" data-view="home"><i class="bi bi-house-door"></i> Início / Pesquisa</button>
+        <button class="nav-item" data-view="favorites"><i class="bi bi-heart"></i> Favoritos</button>
+        <button class="nav-item" data-view="history"><i class="bi bi-clock-history"></i> Histórico</button>
+      </nav>
+      <div class="sidebar-bottom mt-auto">
+        <span class="pulse"></span> Player pronto
+        <small>Reprodução incorporada</small>
+      </div>
+    </aside>
+
+    <!-- Offcanvas Menu Mobile -->
+    <div class="offcanvas offcanvas-start xyro-offcanvas" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+      <div class="offcanvas-header border-bottom border-secondary border-opacity-25">
+        <a class="brand m-0" href="./" id="mobileMenuLabel">
+          <span class="brand-mark">X</span>
+          <span>XYRO <small>IS BACK!</small></span>
+        </a>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column">
+        <div class="side-label">MENU</div>
+        <nav class="d-flex flex-column gap-2">
+          <button class="nav-item active" data-view="home" data-bs-dismiss="offcanvas"><i class="bi bi-house-door"></i> Início / Pesquisa</button>
+          <button class="nav-item" data-view="favorites" data-bs-dismiss="offcanvas"><i class="bi bi-heart"></i> Favoritos</button>
+          <button class="nav-item" data-view="history" data-bs-dismiss="offcanvas"><i class="bi bi-clock-history"></i> Histórico</button>
+        </nav>
+        <div class="sidebar-bottom mt-auto">
+          <span class="pulse"></span> Player pronto
+          <small>Reprodução incorporada</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header class="topbar" id="topbar">
+        <button class="mobile-brand d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Abrir menu">
+          X
+        </button>
+
+        <!-- Barra de pesquisa (visível apenas na aba Início / Pesquisa) -->
+        <div id="searchControls" class="search-controls">
+          <form id="searchForm" class="search">
+            <i class="bi bi-search text-secondary"></i>
+            <input id="searchInput" type="search" placeholder="Pesquise vídeos ou cole um link/ID..." autocomplete="off" aria-label="Pesquisar vídeos">
+            <button type="submit" class="btn-xyro">
+              <span class="d-none d-sm-inline">Pesquisar</span>
+              <i class="bi bi-arrow-right d-inline d-sm-none"></i>
+            </button>
+          </form>
+          <button id="clearSearch" class="icon-button" title="Limpar pesquisa" aria-label="Limpar pesquisa">
+            <i class="bi bi-arrow-counterclockwise"></i>
+          </button>
+        </div>
+
+        <!-- Título da aba no topo quando estiver em Favoritos/Histórico -->
+        <div id="libraryHeaderTitle" class="library-header-title d-none">
+          <span class="eyebrow">SUA BIBLIOTECA</span>
+          <strong id="libraryTopTitle">Favoritos</strong>
+        </div>
+      </header>
+
+      <section class="welcome" id="welcome">
+        <div class="eyebrow"><span class="pulse"></span> SEU ESPAÇO, SEU SOM</div>
+        <h1>Seu próximo <em>play</em><br>começa aqui.</h1>
+        <p>Pesquise um vídeo ou cole um link/ID para começar a assistir.</p>
+      </section>
+
+      <section class="content-grid is-library" id="contentGrid">
+        <section class="results-panel">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow" id="resultEyebrow">EXPLORE</span>
+              <h2 id="resultTitle">Em destaque</h2>
+            </div>
+            <span id="resultCount" class="badge rounded-pill xyro-badge"></span>
+          </div>
+
+          <div id="results" class="results">
+            <div class="empty-state">
+              <div class="empty-icon"><i class="bi bi-search"></i></div>
+              <strong>O que vamos assistir?</strong>
+              <span>Use a pesquisa acima para encontrar vídeos.</span>
+            </div>
+          </div>
+
+          <div id="loadMoreWrap" class="text-center mt-4 d-none">
+            <button id="loadMoreBtn" class="btn btn-outline-xyro px-4 py-2 rounded-3 fw-semibold">
+              <i class="bi bi-plus-circle me-1"></i> Carregar mais vídeos
+            </button>
+          </div>
+        </section>
+
+        <!-- Player (aparece apenas na aba de pesquisa/reprodução) -->
+        <aside class="player-panel is-hidden" id="playerPanel">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">AGORA TOCANDO</span>
+              <h2>Player</h2>
+            </div>
+            <button id="favoriteCurrent" class="heart" title="Adicionar aos favoritos" aria-label="Favoritar vídeo atual">
+              <i class="bi bi-heart"></i>
+            </button>
+          </div>
+          <div class="video-frame ratio ratio-16x9" id="videoFrame">
+            <div class="video-placeholder">
+              <div class="play-orb"><i class="bi bi-play-fill"></i></div>
+              <strong>Escolha um vídeo</strong>
+              <span>Ele aparecerá aqui</span>
+            </div>
+          </div>
+          <div class="now-playing">
+            <div>
+              <strong id="nowTitle">Nada reproduzindo</strong>
+              <span id="nowChannel">Selecione um resultado para começar</span>
+            </div>
+            <span class="live-dot"></span>
+          </div>
+          <div class="player-note">
+            A reprodução usa o player oficial incorporado. Alguns vídeos podem não permitir incorporação.
+          </div>
+        </aside>
+      </section>
+
+      <footer class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+        <div>XYRO IS BACK!</div>
+        <span>Feito para descobrir e assistir.</span>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
